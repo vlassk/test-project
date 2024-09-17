@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include_directories(include)
 
-add_executable(main src/main.cpp src/my_add.cpp)
+add_executable(main main.cpp src/my_add.cpp)
 
 include(FetchContent)
 FetchContent_Declare(
@@ -19,7 +19,7 @@ FetchContent_MakeAvailable(googletest)
 
 enable_testing()
 
-add_executable(my_test src/my_test.cpp src/my_add.cpp)
+add_executable(my_test tests/my_test.cpp src/my_add.cpp)
 
 target_link_libraries(my_test GTest::gtest_main)
 
