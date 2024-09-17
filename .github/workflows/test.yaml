@@ -13,6 +13,7 @@ jobs:
           path: |
             build/main
             build/my_test
+            build/my_bench
   
   tests:
     needs: [build]
