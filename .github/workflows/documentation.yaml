@@ -27,14 +27,11 @@ jobs:
     needs: [build]
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: gh-pages
 
       - name: Download Output Directory
         uses: actions/download-artifact@v4
         with:
           name: doc-files
-          path: docDir
 
       - name: Commit changes
         uses: EndBug/add-and-commit@v7
@@ -42,8 +39,8 @@ jobs:
           author_name: Carl Timmer
           author_email: timmer@jlab.org
           message: 'Update docs'
-          branch: gh-pages
-          add: '["docDir/html/*"]'
+          branch: main
+          add: '["html/*"]'
 
 
   
