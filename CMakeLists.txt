@@ -8,7 +8,7 @@ include_directories(include)
 
 add_executable(main main.cpp src/my_add.cpp)
 
-#testing and benchmarking
+# testing and benchmarking
 include(FetchContent)
 FetchContent_Declare(
     googletest
