@@ -1,1 +1,1 @@
-Documentation at [https://vlassk.github.io/test-project/](url)
+[Documentation](https://vlassk.github.io/test-project/)
