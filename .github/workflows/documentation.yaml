@@ -1,26 +1,26 @@
-﻿on:
+﻿name: Documentation Build and Publish
+
+on:
   push:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
-  build:
+  build-and-publish:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-      
-    - name: Set up Doxygen
-      run: sudo apt-get update && sudo apt-get install -y doxygen
-      
-    - name: Generate Doxygen Documentation
-      run: doxygen Doxyfile
-      
-    - name: Commit and push changes
-      run: |
-        git config --local user.email "actions@github.com"
-        git config --local user.name "GitHub Actions"
-        git add .
-        git commit -m "Generate Doxygen Documentation"
-        git push
+      - name: Checkout code
+        uses: actions/checkout@v3
 
+      - name: Install Doxygen
+        run: sudo apt-get update && sudo apt-get install doxygen
+
+      - name: Generate Documentation
+        run: doxygen Doxyfile
+
+      - name: Publish to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: doc/html
 
